@@ -1,5 +1,7 @@
 import { error } from "console";
+import { register } from "module";
 import React from "react";
+import { UseFormRegister } from "react-hook-form";
 import { FaStarOfLife } from "react-icons/fa";
 
 interface IInputProps {
@@ -10,12 +12,14 @@ interface IInputProps {
   placeholder: string;
   id: string;
   error?: string;
+  register: UseFormRegister<any>;
 }
 
 const Input = ({
   type,
   required,
   name,
+  register,
   label,
   id,
   placeholder,
@@ -32,7 +36,8 @@ const Input = ({
       <input
         type={type}
         id={id}
-        name={name}
+        // name={name}
+        {...register(name)}
         placeholder={placeholder}
         className={`w-full border rounded-md px-2 py-1 hover:outline-1 ${error ? "border-red-500 focus:border-red-600 border-2" : "border-b-green-300 focus:border-cyan-600"}`}
       />
