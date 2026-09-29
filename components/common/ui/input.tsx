@@ -3,7 +3,7 @@ import React from "react";
 import { FaStarOfLife } from "react-icons/fa";
 
 interface IInputProps {
-  type: "text" | "email" | "phone" | "file";
+  type: "text" | "email" | "password" | "phone" | "file";
   required?: boolean;
   name: string;
   label: string;
