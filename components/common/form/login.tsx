@@ -15,18 +15,13 @@ const LoginForm = () => {
 
   return (
     <form className="flex flex-col gap-5">
-      <input
-        type="email"
-        placeholder="jodn@gmail.com"
-        id="email"
-        name="email"
-      />
+      <input type="email" placeholder="jodn@gmail.com" id="email" />
 
       <input
         type="password"
         placeholder="enter your password"
         required
-        name="password"
+        // register={register}
         id="password"
       />
     </form>
