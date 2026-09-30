@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../ui/input";
+import { useMutation } from "@tanstack/react-query";
 
 const LoginForm = () => {
   const {
@@ -15,9 +16,12 @@ const LoginForm = () => {
     },
   });
 
+  const {} = useMutation({});
+
   return (
     <form className="flex flex-col gap-5">
       <Input
+        register={register}
         name="email"
         id="email"
         placeholder="john@gmail.com"
@@ -27,6 +31,7 @@ const LoginForm = () => {
       />
 
       <Input
+        register={register}
         type="password"
         placeholder="enter your password"
         required
