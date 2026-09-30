@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Input from "../ui/input";
 import { useForm } from "react-hook-form";
