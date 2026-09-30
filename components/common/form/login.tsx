@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import { useForm } from "react-hook-form";
+import Input from "../ui/input";
 
 const LoginForm = () => {
   const {
@@ -15,14 +17,22 @@ const LoginForm = () => {
 
   return (
     <form className="flex flex-col gap-5">
-      <input type="email" placeholder="jodn@gmail.com" id="email" />
+      <Input
+        name="email"
+        id="email"
+        placeholder="john@gmail.com"
+        label="Email"
+        required
+        type="email"
+      />
 
-      <input
+      <Input
         type="password"
         placeholder="enter your password"
         required
-        // register={register}
+        label="Password"
         id="password"
+        name="password"
       />
     </form>
   );

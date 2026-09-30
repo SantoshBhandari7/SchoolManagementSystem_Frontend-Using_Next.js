@@ -12,32 +12,32 @@ interface IInputProps {
   placeholder: string;
   id: string;
   error?: string;
-  register: UseFormRegister<any>;
+  // register: UseFormRegister<any>;
 }
 
 const Input = ({
   type,
   required,
   name,
-  register,
+  // register,
   label,
   id,
   placeholder,
   error,
 }: IInputProps) => {
   return (
-    <div className="flex flex-row w-full">
+    <div className="h-full flex flex-col w-full">
       <div className="flex flex-row gap-0.5">
         <label>{label}</label>
         {required && (
-          <FaStarOfLife size={15} className="text-red-500 text-[8px]" />
+          <FaStarOfLife size={10} className="text-red-500 text-[5px]" />
         )}
       </div>
       <input
         type={type}
         id={id}
-        // name={name}
-        {...register(name)}
+        name={name}
+        // {...register(name)}
         placeholder={placeholder}
         className={`w-full border rounded-md px-2 py-1 hover:outline-1 ${error ? "border-red-500 focus:border-red-600 border-2" : "border-b-green-300 focus:border-cyan-600"}`}
       />
