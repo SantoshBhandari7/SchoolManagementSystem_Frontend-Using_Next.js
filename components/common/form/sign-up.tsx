@@ -77,7 +77,7 @@ const SignupForm = () => {
 
       <Input
         register={register}
-        name="cnfPassword"
+        name="confirmPassword"
         required
         id="cnfPass"
         label="Confirm Password"
