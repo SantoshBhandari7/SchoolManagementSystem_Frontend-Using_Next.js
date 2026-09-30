@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { TSignUp } from "@/types/auth.types";
 import { SignUpSchema } from "@/schema/auth.schema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
+import { signup } from "@/api/auth.api";
+import Button from "../ui/button";
 
 const SignupForm = () => {
   const {
@@ -22,8 +25,22 @@ const SignupForm = () => {
     mode: "all",
   });
 
+  const { mutate } = useMutation({
+    mutationFn: signup,
+    onSuccess: (response) => {
+      console.log("success mutation on signup ", response);
+    },
+    onError: (error) => {
+      console.log("error mutation on signup ", error);
+    },
+  });
+
+  const onSubmit = (data: TSignUp) => {
+    mutate(data);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col gap-0.5">
       <Input
         name="name"
         register={register}
@@ -76,6 +93,9 @@ const SignupForm = () => {
         id="phone"
         error={errors?.phone?.message}
       />
+      <div className="mt-2">
+        <Button type="submit" label="Sign-Up" />
+      </div>
     </form>
   );
 };
