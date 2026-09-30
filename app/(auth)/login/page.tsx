@@ -1,9 +1,11 @@
+"use client";
 import LoginForm from "@/components/common/form/login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import React from "react";
-import { BsBackspace } from "react-icons/bs";
 import { HiBackspace } from "react-icons/hi";
 
+const queryClient = new QueryClient();
 const LoginPage = () => {
   return (
     <main className="w-full min-h-screen p-3 flex items-center justify-center">
@@ -15,7 +17,9 @@ const LoginPage = () => {
             </h1>
             <p className="text-ts text-gray-500">Welcome back</p>
           </div>
-          <LoginForm />
+          <QueryClientProvider client={queryClient}>
+            <LoginForm />
+          </QueryClientProvider>
           <Link
             href={"/forgot-password"}
             className="text-blue-400 font-serif text-center"
