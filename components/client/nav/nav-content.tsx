@@ -13,20 +13,25 @@ const navLinks: { label: string; link: string; id: string }[] = [
     id: "program-page",
   },
   {
-    label: "About Us",
+    label: "AboutUs",
     link: "/about-us",
     id: "about-page",
   },
   {
-    label: "Contact-us",
+    label: "ContactUs",
     link: "/contact-us",
     id: "contact-page",
+  },
+  {
+    label: "MIS Login",
+    link: "/login",
+    id: "login-page",
   },
 ];
 
 const NavLinks = () => {
   return (
-    <div>
+    <div className="flex gap-3">
       {navLinks.map((item) => (
         <NavLink key={item.id} item={item} />
       ))}
