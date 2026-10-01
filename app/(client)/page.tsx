@@ -1,4 +1,5 @@
 import Hero from "@/components/client/landing/hero";
+import Programs from "@/components/client/landing/programcard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function Home() {
       <section className="h-[80vh]">
         <Hero />
       </section>
+      <Programs />
     </main>
   );
 }
