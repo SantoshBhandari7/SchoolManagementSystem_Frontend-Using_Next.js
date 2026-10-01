@@ -38,7 +38,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col gap-2">
       <Input
         register={register}
         name="email"
