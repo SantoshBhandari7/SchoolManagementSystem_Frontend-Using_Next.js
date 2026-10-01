@@ -41,7 +41,7 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col gap-0.5">
+    <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col gap-2">
       <Input
         name="name"
         register={register}
