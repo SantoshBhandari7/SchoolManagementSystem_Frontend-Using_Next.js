@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div>
       <Image
-        src={"/logo.png"}
+        src={"/MKSH Academy Emblem.png"}
         alt="MKSH Academy"
         width={500}
         height={500}

@@ -5,7 +5,7 @@ import Logo from "@/components/common/ui/logo";
 
 const NavBar = () => {
   return (
-    <nav className="hidden lg:flex gap-6 justify-between items-center px-15 h-15 border-b border-gray-300 shadow">
+    <nav className="hidden  md:flex lg:flex gap-6 justify-between items-center px-15 h-15 border-b border-gray-300 shadow">
       <div className="flex w-25 items-center h-10">
         {/* {logo} */}
         <Logo />
