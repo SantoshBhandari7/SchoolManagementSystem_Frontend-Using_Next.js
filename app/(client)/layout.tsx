@@ -5,7 +5,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main>
       <NavBar />
-      <section>{children}</section>
+      <section className="min-h-[85vh]">{children}</section>
     </main>
   );
 };

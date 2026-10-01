@@ -1,11 +1,15 @@
 import React from "react";
 import NavLinks from "./nav-content";
 import Link from "next/link";
+import Logo from "@/components/common/ui/logo";
 
 const NavBar = () => {
   return (
     <nav>
-      <div>{/* {logo} */}</div>
+      <div>
+        {/* {logo} */}
+        <Logo />
+      </div>
 
       {/* {links} */}
       <NavLinks />
