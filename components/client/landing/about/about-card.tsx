@@ -15,5 +15,4 @@ const AboutCards = ({ icon, name, description }: IAboutProps) => {
     </div>
   );
 };
-
 export default AboutCards;
