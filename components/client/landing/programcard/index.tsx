@@ -4,7 +4,7 @@ import ProgramLists from "./list";
 
 const Programs = () => {
   return (
-    <div className="px-20 py-10 bg-gray-300">
+    <div className="px-20 py-10 bg-gray-200">
       <SectionHeader
         title="Our Academy Programs"
         subtitle="Discover program with faculties"

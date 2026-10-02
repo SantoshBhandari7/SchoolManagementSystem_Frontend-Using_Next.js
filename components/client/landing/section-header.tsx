@@ -9,7 +9,7 @@ interface IProps {
 }
 const SectionHeader = ({ title, subtitle, link }: IProps) => {
   return (
-    <header className="flex justify-center mb-6  mt-5 items-center">
+    <header className="flex justify-center mb-7  mt-5 items-center">
       <div>
         <h1 className="text-xl font-bold text-gray-700 ">{title}</h1>
         <p className="text-sm text-gray-500 ">{subtitle}</p>

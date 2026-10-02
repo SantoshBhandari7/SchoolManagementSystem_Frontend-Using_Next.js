@@ -1,20 +1,42 @@
 import { IProgram } from "@/types/program.types";
 import Link from "next/link";
 import React from "react";
+// import { FaFlask } from "react-icons/fa";
+import {
+  FaBalanceScale,
+  FaBookOpen,
+  FaCalculator,
+  FaFlask,
+  FaGraduationCap,
+} from "react-icons/fa";
 import { RiArrowRightLine, RiGhostLine } from "react-icons/ri";
 
 interface IProps {
   program: IProgram;
 }
+
+const programIcons = {
+  Science: FaFlask,
+  Management: FaCalculator,
+  Humanities: FaBookOpen,
+  Law: FaBalanceScale,
+};
+
 const ProgramCard = ({
   program: { name, description, duration, eligibility },
 }: IProps) => {
+  const Icon =
+    programIcons[name as keyof typeof programIcons] ?? FaGraduationCap;
+
   return (
     // <main className="w-full ">
     <article className=" flex bg-white flex-col gap-2 min-h-40 max-h-60 min-w-70 max-w-100 border border-gray-300 p-3 rounded-lg relative  hover:scale-[1.05] hover:shadow">
+      <div className="flex justify-start px-4 pt-2">
+        <Icon size={20} />
+      </div>
       <div>
         <p className="text-lg font-bold text-gray-800 px-4 py-2">{name}</p>
-        <p className="line-clamp-3 font-normal text-sm p-1 text-gray-600 leading-5">
+        <p className="line-clamp-3 font-normal text-sm px-4 text-gray-600 leading-5">
           {description}
         </p>
         {/* <p className="text-md font-serif">{duration}</p>
@@ -22,7 +44,7 @@ const ProgramCard = ({
       </div>
       <Link
         href={`/programs`}
-        className="flex items-center text-blue-500 gap-1 font-serif"
+        className="flex items-center text-blue-500 gap-1  px-4 font-serif"
       >
         Learn more <RiArrowRightLine />
       </Link>
