@@ -4,12 +4,14 @@ import ProgramLists from "./list";
 
 const Programs = () => {
   return (
-    <div className="px-20 py-10 bg-gray-200">
+    <div className="px-20 py-30   bg-gray-200">
       <SectionHeader
         title="Our Academy Programs"
-        subtitle="Discover program with faculties"
+        subtitle="Discover world-class programs designed to prepare you for success in your chosen field "
       />
-      <ProgramLists />
+      <div className="pt-6">
+        <ProgramLists />
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 const Hero = () => {
   return (
     // <main className="h-full w-full flex">
-    <section className="relative h-[80vh]">
+    <section className="relative h-[90vh]">
       {/* <div style={"backgroundImage:url(`)"}> */}
       <Image
         src={"/Sunny Modern Academy Campus.png"}
@@ -19,12 +19,12 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40 z-10 bg-linear-to-r from-white via-white/10 to-transparent"></div>
 
       <div className="relative  z-20">
-        <div className="flex  min-h-150 items-center px-10 md:px-18">
-          <div className="max-w-lg -translate-y-30 ">
+        <div className="flex  min-h-150 gap-5 items-center px-10 md:px-18">
+          <div className="max-w-xl -translate-y-10 ">
             <p className=" font-serif text-xl text-blue-500  ">
               LEARN . GROW . ACHIEVE
             </p>
-            <h1 className=" font-bold text-3xl text-black pt-2  ">
+            <h1 className=" font-bold text-4xl pt-5 text-black tracking-wider  ">
               Welcome to <br /> <span className="text-blue-500 ">MKSH</span>{" "}
               Academy
             </h1>
@@ -32,21 +32,22 @@ const Hero = () => {
               Empowering Minds, Shaping Futures, <br /> Building Tomorrow’s
               Leaders
             </p>
-          </div>
-          <div className="flex gap-1 -translate-x-65 ">
-            <Link
-              href={"/programs"}
-              className="flex items-center text-white bg-blue-500 border rounded-md w-fit h-fit px-2 py-1  hover:scale-[105%]"
-            >
-              Explore Programs
-              <RiArrowRightLine />
-            </Link>
-            <Link
-              href={"/login"}
-              className="text-white bg-blue-500 flex  border rounded-md items-center w-fit h-fit px-2 py-1  hover:scale-[105%] "
-            >
-              MIS Login <RiArrowRightLine />
-            </Link>
+
+            <div className="flex mt-6 gap-2 sm:flex-col md:flex-row lg:flex-row">
+              <Link
+                href={"/programs"}
+                className="flex items-center text-white bg-blue-500 border rounded-md w-fit h-fit px-2 py-1  hover:scale-[105%]"
+              >
+                Explore Programs
+                <RiArrowRightLine />
+              </Link>
+              <Link
+                href={"/login"}
+                className="text-white bg-blue-500 flex  border rounded-md items-center w-fit h-fit px-2 py-1  hover:scale-[105%] "
+              >
+                MIS Login <RiArrowRightLine />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

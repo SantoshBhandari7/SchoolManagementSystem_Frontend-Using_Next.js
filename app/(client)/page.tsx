@@ -1,4 +1,6 @@
+import AboutSection from "@/components/client/landing/about/page";
 import Hero from "@/components/client/landing/hero";
+import LinkSection from "@/components/client/landing/link-section";
 import Programs from "@/components/client/landing/programcard";
 import { Metadata } from "next";
 
@@ -13,6 +15,8 @@ export default function Home() {
         <Hero />
       </section>
       <Programs />
+      <AboutSection />
+      <LinkSection />
     </main>
   );
 }
