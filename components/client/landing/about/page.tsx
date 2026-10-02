@@ -10,7 +10,7 @@ import { BiBookOpen } from "react-icons/bi";
 
 const AboutSection = () => {
   return (
-    <section className="flex flex-col gap-6 mt-6 p-10  ">
+    <section className="flex flex-col gap-6  p-10 bg-gray-100 ">
       <div className=" flex flex-col px-12 gap-0.5">
         <h1 className="text-md text-gray-500 font-semibold">
           Why Choose MKSH Academy
