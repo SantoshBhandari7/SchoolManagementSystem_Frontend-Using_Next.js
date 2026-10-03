@@ -14,7 +14,7 @@ const Footer = () => {
         <h1 className="text-md text-center font-stretch-100% font-semibold">
           Quick Links
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 justify-around">
           <Link href={"/"} className=" hover:text-blue-500">
             Home
           </Link>

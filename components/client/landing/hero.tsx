@@ -7,7 +7,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 const Hero = () => {
   return (
     // <main className="h-full w-full flex">
-    <section className="relative h-[90vh]">
+    <section className="relative h-[85vh]">
       {/* <div style={"backgroundImage:url(`)"}> */}
       <Image
         src={"/Sunny Modern Academy Campus.png"}
