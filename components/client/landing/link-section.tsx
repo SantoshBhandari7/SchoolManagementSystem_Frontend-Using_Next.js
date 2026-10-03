@@ -5,8 +5,8 @@ import { RiArrowRightLine } from "react-icons/ri";
 
 const LinkSection = () => {
   return (
-    <main className="w-full min-h-full p-12 bg-gray-400 ">
-      <div className=" flex flex-col  sm:flex sm:flex-cols md:flex-row lg:flex-row justify-around gap-4">
+    <section className="w-full min-h-full p-12 bg-gray-400 ">
+      <div className=" flex flex-col  sm:flex sm:flex-col md:flex-row lg:flex-row justify-around gap-4">
         <div className="flex items-center gap-1">
           <FaGraduationCap size={40} className="text-blue-500" />
           <div className="flex flex-col">
@@ -34,7 +34,7 @@ const LinkSection = () => {
           </Link>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 
