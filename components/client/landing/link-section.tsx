@@ -18,16 +18,17 @@ const LinkSection = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col px-5  gap-2 sm:flex-col md:flex-row lg:flex-row">
+        <div className="flex flex-col px-5  gap-2 sm:flex-col md:flex-row lg:flex-row ">
           <Link
             href={"/programs"}
-            className=" flex bg-blue-500 font-serif justify-center border-green-500 items-center w-fit h-fit p-1 border rounded-md hover:scale-[1.05]"
+            className=" flex whitespace-nowrap bg-blue-500 font-serif justify-center  border-green-500 items-center w-fit h-fit p-1 border rounded-md hover:scale-[1.05]"
           >
-            Explore Programs <RiArrowRightLine />
+            Explore Programs
+            <RiArrowRightLine />
           </Link>
           <Link
             href={"/contacts-us"}
-            className="border border-gray-300 w-fit h-fit p-1 rounded-md  hover:scale-[1.05] bg-white"
+            className="border  whitespace-nowrap border-gray-300 w-fit h-fit p-1 rounded-md  hover:scale-[1.05] bg-white"
           >
             Contact Us
           </Link>
