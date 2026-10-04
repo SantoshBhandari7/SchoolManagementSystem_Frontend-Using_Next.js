@@ -28,7 +28,7 @@ const ContactPage = () => {
         </div>
         <div className="w-full min-h-[40vh]  bg-white/30 flex flex-col sm:flex-col md:flex-row lg:flex-row gap-5 p-6">
           <div className="flex flex-col ">
-            <h1>Our Contact Information</h1>
+            <h1 className="font-bold">Our Contact Information</h1>
             <p>
               We welcome students, parents, and visitors to connect with MKSH
               Academy.
