@@ -69,8 +69,8 @@ const ContactPage = () => {
             </div>
           </div>
           <div>
-            <h1>Send Us a Message</h1>
-            <p>
+            <h1 className="font-bold text-2xl ">Send Us a Message</h1>
+            <p className="text-xs font-normal text-gray-600">
               Fill out the form below and we will get back to you as soon as
               possible.
             </p>
