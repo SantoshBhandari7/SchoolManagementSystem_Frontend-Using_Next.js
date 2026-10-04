@@ -1,3 +1,4 @@
+import ContactForm from "@/components/client/layout/contact-form";
 import Image from "next/image";
 import React from "react";
 
@@ -18,39 +19,39 @@ const ContactPage = () => {
             <h1 className="font-bold text-2xl text-black sm:text-black lg:text-white mb-2">
               Contact Us
             </h1>
-            <p className="text-xs font-normal">
+            <p className="text-sm font-normal">
               Have questions about admission ,programs or our academy?
             </p>
-            <p className="text-xs font-normal">
+            <p className="text-sm font-normal">
               We are here to help you. Feel free to reach out to us.
             </p>
           </div>
         </div>
-        <div className="w-full min-h-[40vh]  bg-white/30 flex flex-col sm:flex-col md:flex-row lg:flex-row gap-5 p-6 border border-gray-400">
-          <div className="flex flex-col ">
-            <h1 className="font-bold">Our Contact Information</h1>
-            <p>
-              We welcome students, parents, and visitors to connect with MKSH
-              Academy.
+        <div className="w-full min-h-[40vh] justify-around  bg-white/30 flex flex-col sm:flex-col  lg:flex-row gap-6 p-6  ">
+          <div className="flex flex-col  whitespace-nowrap border rounded-md border-gray-400  h-fit p-7 w-fit ">
+            <h1 className="font-bold text-2xl text-blue-400">
+              Our Contact Information
+            </h1>
+            <p className="text-sm text-gray-600 ">
+              We welcome students, parents, and visitors to connect <br />
+              with MKSH Academy. Feel free to contact us for information about
+              <br />
+              admissions, academic programs, facilities, and other inquiries.
             </p>
-            <p>
-              Feel free to contact us for information about admissions, academic
-              programs, facilities, and other inquiries.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-2 ">
-              <div className="flex flex-col gap-0.5 border  w-60 h-fit p-2 m-2 rounded-md transition-all duration-300 hover:scale-[1.05]">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-7 ">
+              <div className="flex flex-col gap-0.5 border  min-w-60 h-fit p-2 m-2 rounded-md transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Our Address </h1>
                 <h4 className=" font-medium text-sm">MKSH Academy</h4>
                 <p className="text-sm sm:text-sm md:text-xs">
                   Kathmandu, Nepal
                 </p>
               </div>
-              <div className="flex flex-col gap-0.5 border  w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
+              <div className="flex flex-col gap-0.5 border  min-w-60  h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Phone</h1>
                 <p className="text-sm sm:text-sm md:text-xs">+977 014312739</p>
                 <p className="text-sm sm:text-sm md:text-xs">+977 9812345678</p>
               </div>
-              <div className="flex flex-col gap-0.5 border w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
+              <div className="flex flex-col gap-0.5 border min-w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Email</h1>
                 <p className="tracking-tight text-sm sm:text-sm md:text-xs">
                   info@mkshacademy.edu.np
@@ -59,7 +60,7 @@ const ContactPage = () => {
                   admission@mkshacademy.edu.np
                 </p>
               </div>
-              <div className="flex flex-col gap-0.5 border  w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
+              <div className="flex flex-col gap-0.5 border  min-w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Office Hours</h1>
                 <p className="text-sm sm:text-sm md:text-xs">Sunday - Friday</p>
                 <p className="text-sm sm:text-sm md:text-xs">
@@ -68,12 +69,15 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-          <div>
-            <h1 className="font-bold text-2xl ">Send Us a Message</h1>
-            <p className="text-xs font-normal text-gray-600">
+          <div className=" border border-gray-300 px-12 py-5 w-fit h-fit p-18 sm:p-18 md:p-14 lg:p-12 rounded-md">
+            <h1 className="font-bold text-2xl text-blue-400">
+              Send Us a Message
+            </h1>
+            <p className="text-xs font-normal mb-2 text-gray-600">
               Fill out the form below and we will get back to you as soon as
               possible.
             </p>
+            <ContactForm />
           </div>
         </div>
       </section>
