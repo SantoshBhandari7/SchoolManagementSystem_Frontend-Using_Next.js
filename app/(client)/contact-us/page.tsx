@@ -29,10 +29,10 @@ const ContactPage = () => {
         </div>
         <div className="w-full min-h-[40vh] mt-10 justify-around  bg-white/30 flex flex-col sm:flex-col  lg:flex-row gap-6 p-6  ">
           <div className="flex flex-col  whitespace-nowrap border rounded-md border-gray-400  h-fit p-7 w-fit ">
-            <h1 className="font-bold text-2xl text-blue-400">
+            <h1 className="font-bold mb-2 text-2xl text-blue-400">
               Our Contact Information
             </h1>
-            <p className="text-sm text-gray-600 ">
+            <p className="text-sm text-gray-600 mb-4">
               We welcome students, parents, and visitors to connect <br />
               with MKSH Academy. Feel free to contact us for information about
               <br />
