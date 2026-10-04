@@ -1,3 +1,6 @@
+import AboutCards from "@/components/client/landing/about/about-card";
+import AboutSection from "@/components/client/landing/about/page";
+import LinkSection from "@/components/client/landing/link-section";
 import Programs from "@/components/client/landing/programcard";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,6 +55,29 @@ const ProgramPage = () => {
       <div className="border-t border-gray-500">
         <Programs />
       </div>
+      {/* <div className="flex justify-between gap-3  bg-gray-100">
+        <div className="">
+          <AboutSection />
+        </div>
+        <div>
+          <h1>Frequently Asked Questions?</h1>
+          <div>
+            <h1>What is the duration of +2 programs?</h1>
+          </div>
+          <div>
+            <h1>What is eligibility criteria?</h1>
+          </div>
+          <div>
+            <h1>Do you provide hostel facilities? </h1>
+          </div>
+          <div>
+            <h1>Are there scholarship opportunities?</h1>
+          </div>
+          <div>
+            <h1>Can i apply online</h1>
+          </div>
+        </div> */}
+      {/* </div> */}
     </main>
   );
 };
