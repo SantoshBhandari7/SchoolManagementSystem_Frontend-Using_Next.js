@@ -26,7 +26,7 @@ const ContactPage = () => {
             </p>
           </div>
         </div>
-        <div className="w-full min-h-[40vh]  bg-white/30 flex flex-col sm:flex-col md:flex-row lg:flex-row gap-5 p-6">
+        <div className="w-full min-h-[40vh]  bg-white/30 flex flex-col sm:flex-col md:flex-row lg:flex-row gap-5 p-6 border border-gray-400">
           <div className="flex flex-col ">
             <h1 className="font-bold">Our Contact Information</h1>
             <p>
