@@ -27,7 +27,7 @@ const ContactPage = () => {
             </p>
           </div>
         </div>
-        <div className="w-full min-h-[40vh] justify-around  bg-white/30 flex flex-col sm:flex-col  lg:flex-row gap-6 p-6  ">
+        <div className="w-full min-h-[40vh] mt-10 justify-around  bg-white/30 flex flex-col sm:flex-col  lg:flex-row gap-6 p-6  ">
           <div className="flex flex-col  whitespace-nowrap border rounded-md border-gray-400  h-fit p-7 w-fit ">
             <h1 className="font-bold text-2xl text-blue-400">
               Our Contact Information
@@ -69,7 +69,7 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-          <div className=" border border-gray-300 px-12 py-5 w-fit h-fit p-18 sm:p-18 md:p-14 lg:p-12 rounded-md">
+          <div className=" border border-gray-300  w-fit h-fit p-18 sm:p-18 md:p-14 lg:p-12 rounded-md">
             <h1 className="font-bold text-2xl text-blue-400">
               Send Us a Message
             </h1>
