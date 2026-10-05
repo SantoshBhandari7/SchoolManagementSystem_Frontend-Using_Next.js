@@ -1,4 +1,4 @@
-import ContactForm from "@/components/client/layout/contact-form";
+import ContactForm from "@/components/client/landing/contact-form";
 import Image from "next/image";
 import React from "react";
 
@@ -28,7 +28,7 @@ const ContactPage = () => {
           </div>
         </div>
         <div className="w-full min-h-[40vh] mt-10 justify-around  bg-white/30 flex flex-col sm:flex-col  lg:flex-row gap-6 p-6  ">
-          <div className="flex flex-col  whitespace-nowrap border rounded-md border-gray-400  h-fit p-7 w-fit ">
+          <div className="flex flex-col  whitespace-nowrap border rounded-md border-gray-300  h-fit p-7 w-fit ">
             <h1 className="font-bold mb-2 text-2xl text-blue-400">
               Our Contact Information
             </h1>
@@ -48,8 +48,8 @@ const ContactPage = () => {
               </div>
               <div className="flex flex-col gap-0.5 border  min-w-60  h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Phone</h1>
-                <p className="text-sm sm:text-sm md:text-xs">+977 014312739</p>
-                <p className="text-sm sm:text-sm md:text-xs">+977 9812345678</p>
+                <p className="text-sm sm:text-sm md:text-xs">+977-014312739</p>
+                <p className="text-sm sm:text-sm md:text-xs">+977-9810829328</p>
               </div>
               <div className="flex flex-col gap-0.5 border min-w-60 h-fit p-2 m-2 rounded-md  transition-all duration-300 hover:scale-[1.05]">
                 <h1 className="text-md font-semibold">Email</h1>
