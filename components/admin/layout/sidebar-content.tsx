@@ -75,7 +75,11 @@ const SidebarItems = ({
   const pathName = usePathname();
   return (
     <Link href={link}>
-      <div className={`flex gap-1 items-center py-3 `}>
+      <div
+        className={`flex gap-1 items-center py-3 border border-gray-300 px-1 rounded
+           text-gray-600 hover:text-white hover:bg-blue-500 transition-all duration-300 
+           ${pathName === link ? "bg-blue-600 text-white" : ""} `}
+      >
         {icon}
         <span className="font-semibold">{label}</span>
       </div>
