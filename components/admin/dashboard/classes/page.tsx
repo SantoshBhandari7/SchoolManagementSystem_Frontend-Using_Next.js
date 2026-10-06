@@ -10,34 +10,36 @@ import React from "react";
 import DataTable from "../../table/data.table";
 import { ISubjects } from "@/types/subject.types";
 import { getAllSubjects } from "@/api/subject.api";
+import { getAllClasses } from "@/api/class.api";
+import { IClass } from "@/types/class.types";
 
-const SubjectTable = () => {
+const ClassTable = () => {
   const {
     data,
     isLoading: isPending,
     isError,
   } = useQuery({
-    queryFn: getAllSubjects,
-    queryKey: ["get-all-subjects"],
+    queryFn: getAllClasses,
+    queryKey: ["get-all-classes"],
   });
 
-  const subjects: ISubjects[] = data?.data?.subjects ?? [];
-  const columns: ColumnDef<ISubjects>[] = [
+  const classes: IClass[] = data?.data?.classRecord ?? [];
+  const columns: ColumnDef<IClass>[] = [
     {
-      accessorKey: "subjectname",
-      header: "Subject Name",
+      accessorKey: "classname",
+      header: "Class Name",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.subjectname}
+          {row.original.classname}
         </span>
       ),
     },
     {
-      accessorKey: "credithour",
-      header: "Credit Hour",
+      accessorKey: "section",
+      header: "Section",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.credithour}
+          {row.original.section}
         </span>
       ),
     },
@@ -52,20 +54,11 @@ const SubjectTable = () => {
     },
 
     {
-      accessorKey: "program",
-      header: "Program",
-      cell: ({ row }) => (
-        <span className="block max-w-35  truncate  text-gray-800 sm:max-w-50">
-          {row.original.program?.name}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "class",
-      header: " Class",
+      accessorKey: "room_mo",
+      header: "Class Room",
       cell: ({ row }) => (
         <span className="block max-w-45 py-2  line-clamp-2 text-xs text-gray-800 sm:max-w-50">
-          {row.original.class?.classname}
+          {row.original.room_no}
         </span>
       ),
     },
@@ -73,19 +66,19 @@ const SubjectTable = () => {
       id: "action",
       header: "Action",
       cell: ({ row }) => {
-        const subject = row.original;
+        const classes = row.original;
 
         return (
           <div className="flex min-w-max gap-2">
             <Link
-              href={`/admin/programs/${subject._id}/update`}
+              href={`/admin/programs/${classes._id}/update`}
               className="rounded-md bg-blue-200 px-2.5 py-1.5 text-xs font-bold text-black transition hover:bg-blue-400 sm:px-3 sm:py-2 sm:text-sm "
             >
               Edit
             </Link>
             <button
               onClick={() => {
-                console.log("delete:", subject._id);
+                console.log("delete:", classes._id);
               }}
               className="rounded-md bg-red-100 px-2.5 py-1.5 text-xs font-medium text-red-600 transition hover:bg-red-300 sm:px-3 sm:py-2 sm:text-sm"
             >
@@ -124,7 +117,7 @@ const SubjectTable = () => {
       <div className="w-full min-w-0 overflow-hidden rounded-lg bg-white shadow-sm">
         <div className="w-full overflow-x-auto">
           <div className="min-w-225">
-            <DataTable columns={columns} data={subjects} />
+            <DataTable columns={columns} data={classes} />
           </div>
         </div>
       </div>
@@ -132,4 +125,4 @@ const SubjectTable = () => {
   );
 };
 
-export default SubjectTable;
+export default ClassTable;
