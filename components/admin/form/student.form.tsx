@@ -1,6 +1,8 @@
 "use client";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
+import { Select } from "@/components/common/ui/select";
+import CLassSelect from "@/components/common/ui/select-class";
 import { StudentSchema } from "@/schema/student.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
@@ -102,6 +104,10 @@ const StudentForm = () => {
           type="text"
           error={errors?.parentPhone?.message}
         />
+
+        <div className="mt-3">
+          <CLassSelect register={register} />
+        </div>
       </form>
       <div className="mt-4">
         <Button type="submit" label="Submit" />
