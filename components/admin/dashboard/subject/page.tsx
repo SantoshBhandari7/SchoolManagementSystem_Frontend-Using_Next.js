@@ -1,83 +1,71 @@
 "use client";
+import { getStudent } from "@/api/student.api";
 import Loading from "@/components/common/ui/loading";
+import { IStudent } from "@/types/student.types";
 import { useQuery } from "@tanstack/react-query";
 import { ColumnDef, useReactTable } from "@tanstack/react-table";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DataTable from "../../table/data.table";
-import { getTeacher } from "@/api/teacher.api";
-import { ITeachers } from "@/types/teacher.types";
+import { ISubjects } from "@/types/subject.types";
+import { getAllSubjects } from "@/api/subject.api";
 
-const TeacherTable = () => {
+const SubjectTable = () => {
   const {
     data,
     isLoading: isPending,
     isError,
   } = useQuery({
-    queryFn: getTeacher,
-    queryKey: ["getTeacher"],
+    queryFn: getAllSubjects,
+    queryKey: ["get-all-subjects"],
   });
 
-  const teachers: ITeachers[] = data?.data?.teachers ?? [];
-  const columns: ColumnDef<ITeachers>[] = [
+  const subjects: ISubjects[] = data?.data ?? [];
+  const columns: ColumnDef<ISubjects>[] = [
     {
-      accessorKey: "profile_image",
-      header: "Profile-Image",
-      cell: ({ row }) => {
-        const teacher = row.original;
+      accessorKey: "subjectname",
+      header: "Subject Name",
+      cell: ({ row }) => (
+        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
+          {row.original.subjectname}
+        </span>
+      ),
+    },
+    {
+      accessorKey: "credithour",
+      header: "Credit Hour",
+      cell: ({ row }) => (
+        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
+          {row.original.credithour}
+        </span>
+      ),
+    },
+    {
+      accessorKey: "teacher",
+      header: "Teacher Name",
+      cell: ({ row }) => (
+        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
+          {row.original.subjectname}
+        </span>
+      ),
+    },
 
-        return (
-          <div>
-            {teacher.profile_image?.path ? (
-              <Image
-                src={teacher.profile_image.path}
-                alt="user.name"
-                width={100}
-                height={100}
-              />
-            ) : (
-              <span className="text-[10px] text-gray-400 text-center">
-                No Image
-              </span>
-            )}
-          </div>
-        );
-      },
-    },
     {
-      accessorKey: "name",
-      header: " teacher Name",
+      accessorKey: "program",
+      header: "Program",
       cell: ({ row }) => (
-        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.user?.name}
+        <span className="block max-w-35  truncate  text-gray-800 sm:max-w-50">
+          {row.original.program}
         </span>
       ),
     },
     {
-      accessorKey: "email",
-      header: "Email",
+      accessorKey: "class",
+      header: " Class",
       cell: ({ row }) => (
-        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.user?.email}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "experience",
-      header: " Experience",
-      cell: ({ row }) => (
-        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.experience}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "subject",
-      header: " Subject",
-      cell: ({ row }) => (
-        <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.subject}
+        <span className="block max-w-45 py-2  line-clamp-2 text-xs text-gray-800 sm:max-w-50">
+          {row.original.class}
         </span>
       ),
     },
@@ -85,19 +73,19 @@ const TeacherTable = () => {
       id: "action",
       header: "Action",
       cell: ({ row }) => {
-        const teacher = row.original;
+        const subject = row.original;
 
         return (
-          <div>
+          <div className="flex min-w-max gap-2">
             <Link
-              href={`/admin/teachers/${teacher._id}/update`}
+              href={`/admin/programs/${subject._id}/update`}
               className="rounded-md bg-blue-200 px-2.5 py-1.5 text-xs font-bold text-black transition hover:bg-blue-400 sm:px-3 sm:py-2 sm:text-sm "
             >
               Edit
             </Link>
             <button
               onClick={() => {
-                console.log("delete:", teacher._id);
+                console.log("delete:", subject._id);
               }}
               className="rounded-md bg-red-100 px-2.5 py-1.5 text-xs font-medium text-red-600 transition hover:bg-red-300 sm:px-3 sm:py-2 sm:text-sm"
             >
@@ -117,7 +105,7 @@ const TeacherTable = () => {
     return (
       <div className="flex min-h-75 w-full items-center justify-center">
         <p className="text-sm text-red-500 sm:text-base">
-          Failed to load teachers
+          Failed to load Subjects
         </p>
       </div>
     );
@@ -127,16 +115,16 @@ const TeacherTable = () => {
     <section className="w-full min-w-0">
       <div className="mb-4">
         <h1 className="text-xl font-bold text-gray-800 sm:text-2xl">
-          Recent teachers
+          Recent Subjects
         </h1>
         <p className="mt-1 text-xs text-gray-500 sm:text-sm">
-          Recently Hired teachers
+          Recently Added Subjects
         </p>
       </div>
       <div className="w-full min-w-0 overflow-hidden rounded-lg bg-white shadow-sm">
         <div className="w-full overflow-x-auto">
           <div className="min-w-225">
-            <DataTable columns={columns} data={teachers} />
+            <DataTable columns={columns} data={subjects} />
           </div>
         </div>
       </div>
@@ -144,4 +132,4 @@ const TeacherTable = () => {
   );
 };
 
-export default TeacherTable;
+export default SubjectTable;

@@ -1,4 +1,3 @@
-import { IProgram } from "@/types/program.types";
 import api from ".";
 
 export const getAllProgram = async () => {

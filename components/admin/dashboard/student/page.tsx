@@ -19,7 +19,7 @@ const StudentTable = () => {
     queryKey: ["getStudent"],
   });
 
-  const students: IStudent[] = data?.data ?? [];
+  const students: IStudent[] = data?.data?.students ?? [];
   const columns: ColumnDef<IStudent>[] = [
     {
       accessorKey: "profile_image",
@@ -50,7 +50,7 @@ const StudentTable = () => {
       header: " Student Name",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.name}
+          {row.original.user?.name}
         </span>
       ),
     },
@@ -59,7 +59,7 @@ const StudentTable = () => {
       header: "Email",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.email}
+          {row.original.user?.email}
         </span>
       ),
     },
@@ -73,11 +73,11 @@ const StudentTable = () => {
       ),
     },
     {
-      accessorKey: "roll_no",
+      accessorKey: "rollno",
       header: " Rollno",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.roll_no}
+          {row.original.rollno}
         </span>
       ),
     },
