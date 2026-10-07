@@ -8,3 +8,13 @@ export const getTeacher = async () => {
     throw error?.response.data;
   }
 };
+
+export const createTeacher = async (data: FormData) => {
+  try {
+    const response = await api.post("/teachers", data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error?.response.data;
+  }
+};

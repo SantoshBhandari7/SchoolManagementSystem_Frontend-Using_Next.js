@@ -1,5 +1,6 @@
 "use client";
 import { createStudent } from "@/api/student.api";
+import { createTeacher } from "@/api/teacher.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
 import { teacherSchema } from "@/schema/teacher.schema";
@@ -41,13 +42,13 @@ const TeacherForm = () => {
   }));
 
   const { mutate } = useMutation({
-    mutationFn: createStudent,
+    mutationFn:createTeacher,
     onSuccess: (response) => {
-      toast.success(response?.message ?? "Student created Successfully");
+      toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");
     },
     onError: (error) => {
-      toast.error(error?.message ?? "Failed to create student");
+      toast.error(error?.message ?? "Failed To Create Teacher");
     },
   });
 
