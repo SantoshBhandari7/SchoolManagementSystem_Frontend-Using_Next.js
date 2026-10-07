@@ -1,12 +1,16 @@
 import React from "react";
 import { Select } from "./select";
 import { useQuery } from "@tanstack/react-query";
-import { useForm, UseFormRegister } from "react-hook-form";
+import {
+  useForm,
+  UseFormRegister,
+  UseFormRegisterReturn,
+} from "react-hook-form";
 import { getStudent } from "@/api/student.api";
 import { getAllClasses } from "@/api/class.api";
 
 interface IProps {
-  register: UseFormRegister<any>;
+  register: UseFormRegisterReturn;
 }
 
 const CLassSelect = ({ register }: IProps) => {
@@ -19,7 +23,6 @@ const CLassSelect = ({ register }: IProps) => {
     <div className="flex flex-col gap-1 ">
       <Select
         register={register}
-        value="classname"
         label="Class"
         options={data?.data?.classRecord ?? []}
       />

@@ -9,7 +9,7 @@ interface IInputProps {
   required?: boolean;
   name: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   id: string;
   error?: string;
   register: UseFormRegister<any>;

@@ -8,11 +8,11 @@ const AdminLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     <main className="h-screen flex ">
       <SideBar />
       <section className="h-full w-full flex flex-col">
-        <nav className="h-18 border-b border-gray-300 w-full flex justify-between items-center pl-4 pr-10">
+        <nav className="h-13 mt-4 sm:h-18 lg:h-20 border-b border-gray-300 w-full flex items-center px-3 sm:px-4">
           <p className="italic font-bold text-lg text-gray-700 ">Hello Admin</p>
         </nav>
 
-        <div className="flex-1 p-2">{children}</div>
+        <div className="p-2 sm:p-3 overflow-auto">{children}</div>
       </section>
     </main>
   );

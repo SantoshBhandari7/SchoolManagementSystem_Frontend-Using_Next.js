@@ -1,5 +1,5 @@
 import { Image } from "./global.types";
-
+import * as yup from "yup";
 export interface ITeachers {
   _id: string;
   user: {
@@ -13,3 +13,15 @@ export interface ITeachers {
   experience: number;
   subject: string;
 }
+
+export interface ICreateTeacher {
+  name: string;
+  email: string;
+  password: string;
+  address: string;
+  salary: number;
+  subject: string;
+  experience: number;
+}
+
+export type TTeacher = yup.InferType<typeof teacherSchema>;

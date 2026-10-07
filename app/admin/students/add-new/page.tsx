@@ -3,8 +3,8 @@ import React from "react";
 
 const CreateStudent = () => {
   return (
-    <main className="w-full min-h-screen flex justify-center items-center  ">
-      <section className="flex  flex-col px-6 py-8 w-150 border rounded-xl shadow-sm ">
+    <main className="w-full min-h-screen flex justify-center items-center px-4 py-6 sm:px-6 lg:px-8">
+      <section className="w-full max-w-3xl flex flex-col px-4 py-6 sm:px-6 sm:py-8 border border-gray-400 rounded-xl shadow-sm bg-white">
         <div className="flex flex-col text-center mb-4 gap-1">
           <h1 className="text-blue-500 text-xl font-bold tracking-wide">
             Student Form
