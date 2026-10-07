@@ -3,6 +3,7 @@ import { createStudent } from "@/api/student.api";
 import { createTeacher } from "@/api/teacher.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
+import { Select } from "@/components/common/ui/select";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
@@ -42,7 +43,7 @@ const TeacherForm = () => {
   }));
 
   const { mutate } = useMutation({
-    mutationFn:createTeacher,
+    mutationFn: createTeacher,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");
@@ -58,7 +59,7 @@ const TeacherForm = () => {
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("password", data.password);
-    formData.append("roll_no", String(data.experience));
+    formData.append("experience", String(data.experience));
     formData.append("address", data.address);
     formData.append("subject", data.subject);
     formData.append("gender", data.gender);
@@ -164,6 +165,14 @@ const TeacherForm = () => {
           required
           type="file"
         />
+
+        <div className="mt-3 p-1">
+          <Select
+            register={register("gender")}
+            label="Gender"
+            options={genderOptions}
+          />
+        </div>
 
         <div className="mt-4 col-span-2">
           <Button type="submit" label="Submit" />

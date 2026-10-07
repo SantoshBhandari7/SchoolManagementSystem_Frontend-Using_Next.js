@@ -12,7 +12,7 @@ const AdminLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
           <p className="italic font-bold text-lg text-gray-700 ">Hello Admin</p>
         </nav>
 
-        <div className="p-2 sm:p-3 overflow-auto">{children}</div>
+        <div className=" overflow-auto">{children}</div>
       </section>
     </main>
   );
