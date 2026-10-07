@@ -164,6 +164,7 @@ const TeacherForm = () => {
           id="profile_image"
           required
           type="file"
+          error={errors?.profile_image?.message}
         />
 
         <div className="mt-3 p-1">
@@ -171,6 +172,7 @@ const TeacherForm = () => {
             register={register("gender")}
             label="Gender"
             options={genderOptions}
+            error={errors?.gender?.message}
           />
         </div>
 
