@@ -1,3 +1,4 @@
+import { teacherSchema } from "@/schema/teacher.schema";
 import { Image } from "./global.types";
 import * as yup from "yup";
 export interface ITeachers {

@@ -19,12 +19,10 @@ export const teacherSchema = yup.object({
     .mixed<Gender>()
     .oneOf(Object.values(Gender), "Invalid gender")
     .required("Gender is required"),
-
   Phone: yup
     .string()
     .matches(/^\d{10}$/, "Parent phone must be exactly 10 digits")
     .optional(),
-
   profile_image: yup
     .mixed<FileList>()
     .required("Profile image is required")
@@ -35,6 +33,5 @@ export const teacherSchema = yup.object({
     ),
   experience: yup.number().required("experience is required"),
   salary: yup.number().required("salary is required"),
-
   subject: yup.string().required("class is required"),
 });
