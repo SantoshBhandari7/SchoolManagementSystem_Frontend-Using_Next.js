@@ -42,7 +42,7 @@ const StudentForm = () => {
     name: gender,
   }));
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: createStudent,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Student created Successfully");
@@ -167,7 +167,11 @@ const StudentForm = () => {
           />
         </div>
         <div className="mt-4 col-span-2">
-          <Button type="submit" label="Submit" />
+          <Button
+            disabled={isPending}
+            type="submit"
+            label={isPending ? "Submitting" : "Submit"}
+          />
         </div>
       </form>
     </div>
