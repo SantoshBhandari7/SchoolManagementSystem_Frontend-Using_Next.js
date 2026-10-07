@@ -1,6 +1,7 @@
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Image } from "./global.types";
 import * as yup from "yup";
+import { Gender } from "./enum.types";
 export interface ITeachers {
   _id: string;
   user: {
@@ -22,7 +23,10 @@ export interface ICreateTeacher {
   address: string;
   salary: number;
   subject: string;
+  gender: Gender;
   experience: number;
+  phone?: string;
+  profile_image: FileList;
 }
 
 export type TTeacher = yup.InferType<typeof teacherSchema>;

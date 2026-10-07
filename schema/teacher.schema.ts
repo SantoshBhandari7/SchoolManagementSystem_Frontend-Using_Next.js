@@ -15,14 +15,16 @@ export const teacherSchema = yup.object({
     .required("Password is required"),
 
   address: yup.string().required("Address is required"),
+
   gender: yup
     .mixed<Gender>()
     .oneOf(Object.values(Gender), "Invalid gender")
     .required("Gender is required"),
-  Phone: yup
+
+  phone: yup
     .string()
-    .matches(/^\d{10}$/, "Parent phone must be exactly 10 digits")
-    .optional(),
+    .matches(/^\d{10}$/, "Parent phone must be exactly 10 digits"),
+
   profile_image: yup
     .mixed<FileList>()
     .required("Profile image is required")

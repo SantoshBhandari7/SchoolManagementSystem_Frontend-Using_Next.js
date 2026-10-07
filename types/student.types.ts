@@ -10,7 +10,7 @@ export interface IStudent {
     name: string;
     email: string;
   };
-  rollno: number;
+  roll_no: number;
   parentName: string;
   profile_image: Image;
 }

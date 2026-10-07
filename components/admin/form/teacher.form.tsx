@@ -2,18 +2,16 @@
 import { createStudent } from "@/api/student.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
-import { Select } from "@/components/common/ui/select";
-import CLassSelect from "@/components/common/ui/select-class";
-import { StudentSchema } from "@/schema/student.schema";
+import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
+import { ICreateTeacher } from "@/types/teacher.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FaRegUser } from "react-icons/fa";
 
 const TeacherForm = () => {
   const router = useRouter();
@@ -21,19 +19,19 @@ const TeacherForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateStudent>({
+  } = useForm<ICreateTeacher>({
     defaultValues: {
       name: "",
       email: "",
       password: "",
-
-      class: "",
-      address: "",
+      experience: undefined,
+      salary: undefined,
       gender: "" as Gender,
-      parentName: "",
-      parentPhone: "",
+      subject: "",
+      address: "",
+      phone: "",
     },
-    resolver: yupResolver(StudentSchema),
+    resolver: yupResolver(teacherSchema),
     mode: "all",
   });
 
@@ -53,18 +51,18 @@ const TeacherForm = () => {
     },
   });
 
-  const OnSubmit = (data: ICreateStudent) => {
+  const OnSubmit = (data: ICreateTeacher) => {
     const formData = new FormData();
 
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("password", data.password);
-    formData.append("roll_no", String(data.roll_no));
+    formData.append("roll_no", String(data.experience));
     formData.append("address", data.address);
-    formData.append("classId", data.class);
+    formData.append("subject", data.subject);
     formData.append("gender", data.gender);
-    formData.append("parentName", data.parentName);
-    formData.append("parentPhone", String(data.parentPhone));
+    formData.append("salary", String(data.salary));
+    formData.append("phone", String(data.phone));
 
     if (data.profile_image?.[0]) {
       formData.append("profile_image", data.profile_image[0]);
@@ -119,33 +117,43 @@ const TeacherForm = () => {
           required
         />
         <Input
-          name="roll_no"
-          id="roll_no"
+          name="experience"
+          id="experience"
           register={register}
-          label="RollNo"
-          placeholder="roll number"
+          label="Experience"
+          placeholder="0"
           type="text"
-          error={errors?.roll_no?.message}
+          error={errors?.experience?.message}
           required
         />
         <Input
-          name="parentName"
-          id="parentName"
+          name="subject"
+          id="subject"
           register={register}
-          label="ParentName"
-          placeholder="john doe"
+          label="Subject"
+          placeholder="mathematics"
           type="text"
-          error={errors?.parentName?.message}
+          error={errors?.subject?.message}
           required
         />
         <Input
-          name="parentPhone"
-          id="parentPhone"
+          name="salary"
+          id="salary"
           register={register}
-          label="ParentPhone"
+          label="Salary"
+          placeholder="30000"
+          type="text"
+          error={errors?.salary?.message}
+          required
+        />
+        <Input
+          name="phone"
+          id="phone"
+          register={register}
+          label="Phone"
           placeholder="9810928263"
           type="text"
-          error={errors?.parentPhone?.message}
+          error={errors?.phone?.message}
         />
         <Input
           register={register}
@@ -156,16 +164,6 @@ const TeacherForm = () => {
           type="file"
         />
 
-        <div className="mt-3">
-          <CLassSelect register={register("class")} />
-        </div>
-        <div className="mb-3 mt-1">
-          <Select
-            options={genderOptions}
-            register={register("gender")}
-            label="Gender"
-          />
-        </div>
         <div className="mt-4 col-span-2">
           <Button type="submit" label="Submit" />
         </div>
@@ -174,4 +172,4 @@ const TeacherForm = () => {
   );
 };
 
-export default StudentForm;
+export default TeacherForm;
