@@ -3,7 +3,8 @@ import { FaStarOfLife } from "react-icons/fa";
 
 interface Option {
   _id: string;
-  name: string;
+  name?: string;
+  classname?: string;
 }
 
 interface IProps {
@@ -32,12 +33,15 @@ export const Select = ({
       </div>
 
       <select {...register} onChange={() => {}}>
-        <option value="" className="border border-gray-400 rounded-md">
+        <option
+          value=""
+          className="border border-gray-400 rounded-md text-black"
+        >
           Select {label}
         </option>
         {options.map((option, index) => (
           <option key={`${option._id}-${index}`} value={option._id}>
-            {option.name}
+            {option.classname || option.name}
           </option>
         ))}
       </select>

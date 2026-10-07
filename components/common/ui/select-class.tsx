@@ -12,16 +12,16 @@ interface IProps {
 const CLassSelect = ({ register }: IProps) => {
   const { data } = useQuery({
     queryFn: getAllClasses,
-    queryKey: ["getAllStudents"],
+    queryKey: ["get-all-classes"],
   });
 
   return (
     <div className="flex flex-col gap-1 ">
       <Select
         register={register}
-        value="class"
+        value="classname"
         label="Class"
-        options={data?.data?.classRecords ?? []}
+        options={data?.data?.classRecord ?? []}
       />
     </div>
   );
