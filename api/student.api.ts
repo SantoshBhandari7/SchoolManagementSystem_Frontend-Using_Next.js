@@ -16,7 +16,15 @@ export const createStudent = async (data: FormData) => {
     const response = await api.post("/students", data);
     return response.data;
   } catch (error: any) {
-    console.log("create student api error:", error);
-    throw error;
+    throw error?.response.data;
+  }
+};
+
+export const getStudentProfile = async () => {
+  try {
+    const response = await api.get("/students/me");
+    return response.data;
+  } catch (error: any) {
+    throw error?.response.data;
   }
 };
