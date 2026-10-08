@@ -11,3 +11,5 @@ export const subjectSchema = yup.object({
 
   class: yup.string().required("class is required"),
 });
+
+export type TSubject = yup.InferType<typeof subjectSchema>;

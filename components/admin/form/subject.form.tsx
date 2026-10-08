@@ -4,6 +4,7 @@ import { createTeacher } from "@/api/teacher.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
 import { Select } from "@/components/common/ui/select";
+import { subjectSchema } from "@/schema/subject.schema";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
@@ -30,7 +31,7 @@ const SubjectForm = () => {
       program: "",
       class: "",
     },
-    resolver: yupResolver(teacherSchema),
+    resolver: yupResolver(subjectSchema),
     mode: "all",
   });
 
