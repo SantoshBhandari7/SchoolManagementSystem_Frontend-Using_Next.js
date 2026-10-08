@@ -5,6 +5,7 @@ interface Option {
   _id: string;
   name?: string;
   classname?: string;
+  subjectname?: string;
 }
 
 interface IProps {
@@ -41,7 +42,7 @@ export const Select = ({
         </option>
         {options.map((option, index) => (
           <option key={`${option._id}-${index}`} value={option._id}>
-            {option.classname || option.name}
+            {option.classname || option.name || option.subjectname}
           </option>
         ))}
       </select>

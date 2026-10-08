@@ -1,5 +1,6 @@
 "use client";
 import { createStudent } from "@/api/student.api";
+import { createSubject } from "@/api/subject.api";
 import { createTeacher } from "@/api/teacher.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
@@ -36,7 +37,7 @@ const SubjectForm = () => {
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: createS,
+    mutationFn: createSubject,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");
@@ -46,22 +47,14 @@ const SubjectForm = () => {
     },
   });
 
-  const OnSubmit = (data: ICreateTeacher) => {
+  const OnSubmit = (data: ICreateSubject) => {
     const formData = new FormData();
 
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("experience", String(data.experience));
-    formData.append("address", data.address);
-    formData.append("subject", data.subject);
-    formData.append("gender", data.gender);
-    formData.append("salary", String(data.salary));
-    formData.append("phone", String(data.phone));
-
-    if (data.profile_image?.[0]) {
-      formData.append("profile_image", data.profile_image[0]);
-    }
+    formData.append("subjectname", data.subjectname);
+    formData.append("teacher", data.teacher);
+    formData.append("program", data.program);
+    formData.append("credithour", String(data.credithour));
+    formData.append("class", data.class);
     mutate(formData);
   };
 
@@ -72,101 +65,29 @@ const SubjectForm = () => {
         className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 gap-3"
       >
         <Input
-          name="name"
-          id="name"
+          name="subjectname"
+          id="subjectname"
           register={register}
-          label="Name"
-          placeholder="john doe"
+          label=" Subject Name"
+          placeholder="Physics"
           type="text"
-          error={errors?.name?.message}
+          error={errors?.subjectname?.message}
           required
         />
         <Input
-          name="email"
-          id="email"
+          name="credithour"
+          id="credithour"
           register={register}
-          label="Email"
-          placeholder="john@gmail.com"
-          type="email"
-          error={errors?.email?.message}
-          required
-        />
-        <Input
-          name="password"
-          id="password"
-          register={register}
-          label="Password"
-          placeholder="enter password"
-          type="password"
-          error={errors?.password?.message}
-          required
-        />
-        <Input
-          name="address"
-          id="address"
-          register={register}
-          label="Address"
-          placeholder="Kathmandu, nepal"
-          type="text"
-          error={errors?.address?.message}
-          required
-        />
-        <Input
-          name="experience"
-          id="experience"
-          register={register}
-          label="Experience"
+          label="credithour"
           placeholder="0"
-          type="text"
-          error={errors?.experience?.message}
+          type="email"
+          error={errors?.credithour?.message}
           required
-        />
-        <Input
-          name="subject"
-          id="subject"
-          register={register}
-          label="Subject"
-          placeholder="mathematics"
-          type="text"
-          error={errors?.subject?.message}
-          required
-        />
-        <Input
-          name="salary"
-          id="salary"
-          register={register}
-          label="Salary"
-          placeholder="30000"
-          type="text"
-          error={errors?.salary?.message}
-          required
-        />
-        <Input
-          name="phone"
-          id="phone"
-          register={register}
-          label="Phone"
-          placeholder="9810928263"
-          type="text"
-          error={errors?.phone?.message}
-        />
-        <Input
-          register={register}
-          label="Profile_Image"
-          name="profile_image"
-          id="profile_image"
-          required
-          type="file"
-          error={errors?.profile_image?.message}
         />
 
         <div className="mt-3 p-1">
-          <Select
-            register={register("gender")}
-            label="Gender"
-            options={genderOptions}
-            error={errors?.gender?.message}
-          />
+            <
+
         </div>
 
         <div className="mt-4 col-span-2">

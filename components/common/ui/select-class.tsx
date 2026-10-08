@@ -1,12 +1,8 @@
 import React from "react";
 import { Select } from "./select";
 import { useQuery } from "@tanstack/react-query";
-import {
-  useForm,
-  UseFormRegister,
-  UseFormRegisterReturn,
-} from "react-hook-form";
-import { getStudent } from "@/api/student.api";
+import { UseFormRegisterReturn } from "react-hook-form";
+
 import { getAllClasses } from "@/api/class.api";
 
 interface IProps {
