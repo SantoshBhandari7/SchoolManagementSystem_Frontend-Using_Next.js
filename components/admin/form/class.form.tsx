@@ -8,8 +8,10 @@ import { Select } from "@/components/common/ui/select";
 import CLassSelect from "@/components/common/ui/select-class";
 import ProgramSelect from "@/components/common/ui/select-program";
 import TeacherSelect from "@/components/common/ui/select-teacher";
+import { classSchema, TClass } from "@/schema/class.schema";
 import { subjectSchema } from "@/schema/subject.schema";
 import { teacherSchema } from "@/schema/teacher.schema";
+import { ICreateClass } from "@/types/class.types";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
 import { ICreateSubject } from "@/types/subject.types";
@@ -27,15 +29,14 @@ const SubjectForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateSubject>({
+  } = useForm<TClass>({
     defaultValues: {
-      subjectname: "",
-      credithour: undefined,
+      classname: "",
+      room_no: undefined,
+      section: "",
       teacher: "",
-      program: "",
-      class: "",
     },
-    resolver: yupResolver(subjectSchema),
+    resolver: yupResolver(classSchema),
     mode: "all",
   });
 
@@ -50,15 +51,8 @@ const SubjectForm = () => {
     },
   });
 
-  const OnSubmit = (data: ICreateSubject) => {
-    const formData = new FormData();
-
-    formData.append("subjectname", data.subjectname);
-    formData.append("teacher", data.teacher);
-    formData.append("program", data.program);
-    formData.append("credithour", String(data.credithour));
-    formData.append("class", data.class);
-    mutate(formData);
+  const OnSubmit = (data: ICreateClass) => {
+    mutate(data);
   };
 
   return (
@@ -69,40 +63,32 @@ const SubjectForm = () => {
       >
         <div className="w-full min-w-0">
           <Input
-            name="subjectname"
-            id="subjectname"
+            name="classname"
+            id="classname"
             register={register}
-            label="Subject Name"
-            placeholder="Physics"
+            label="Class Name"
+            placeholder="Math"
             type="text"
-            error={errors?.subjectname?.message}
+            error={errors?.classname?.message}
             required
           />
         </div>
 
         <div className="w-full min-w-0">
           <Input
-            name="credithour"
-            id="credithour"
+            name="room_no"
+            id="room_no"
             register={register}
-            label="Credit Hour"
+            label="Room_No"
             placeholder="0"
             type="number"
-            error={errors?.credithour?.message}
+            error={errors?.room_no?.message}
             required
           />
         </div>
 
         <div className="w-full min-w-0">
           <TeacherSelect register={register("teacher")} />
-        </div>
-
-        <div className="w-full min-w-0">
-          <CLassSelect register={register("class")} />
-        </div>
-
-        <div className="w-full min-w-0">
-          <ProgramSelect register={register("program")} />
         </div>
 
         <div className="col-span-1 mt-2 w-full md:col-span-2">

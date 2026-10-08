@@ -8,7 +8,7 @@ import { Select } from "@/components/common/ui/select";
 import CLassSelect from "@/components/common/ui/select-class";
 import ProgramSelect from "@/components/common/ui/select-program";
 import TeacherSelect from "@/components/common/ui/select-teacher";
-import { subjectSchema } from "@/schema/subject.schema";
+import { subjectSchema, TSubject } from "@/schema/subject.schema";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
@@ -27,7 +27,7 @@ const SubjectForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateSubject>({
+  } = useForm<TSubject>({
     defaultValues: {
       subjectname: "",
       credithour: undefined,

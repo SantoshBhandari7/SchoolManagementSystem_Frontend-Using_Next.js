@@ -6,7 +6,7 @@ import { Select } from "@/components/common/ui/select";
 import CLassSelect from "@/components/common/ui/select-class";
 import { StudentSchema } from "@/schema/student.schema";
 import { Gender } from "@/types/enum.types";
-import { ICreateStudent } from "@/types/student.types";
+import { ICreateStudent, TStudent } from "@/types/student.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,7 @@ const StudentForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateStudent>({
+  } = useForm<TStudent>({
     defaultValues: {
       name: "",
       email: "",

@@ -12,3 +12,10 @@ export interface IClass {
     };
   };
 }
+
+export interface ICreateClass {
+  classname: string;
+  section: string;
+  room_no: number;
+  teacher: string;
+}

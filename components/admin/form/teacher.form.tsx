@@ -7,7 +7,7 @@ import { Select } from "@/components/common/ui/select";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
 import { ICreateStudent } from "@/types/student.types";
-import { ICreateTeacher } from "@/types/teacher.types";
+import { ICreateTeacher, ITeachers, TTeacher } from "@/types/teacher.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,7 @@ const TeacherForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateTeacher>({
+  } = useForm<TTeacher>({
     defaultValues: {
       name: "",
       email: "",

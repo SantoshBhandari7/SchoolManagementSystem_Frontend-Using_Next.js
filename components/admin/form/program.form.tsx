@@ -1,4 +1,5 @@
 "use client";
+import { createProgram } from "@/api/program.api";
 import { createStudent } from "@/api/student.api";
 import { createSubject } from "@/api/subject.api";
 import { createTeacher } from "@/api/teacher.api";
@@ -8,9 +9,11 @@ import { Select } from "@/components/common/ui/select";
 import CLassSelect from "@/components/common/ui/select-class";
 import ProgramSelect from "@/components/common/ui/select-program";
 import TeacherSelect from "@/components/common/ui/select-teacher";
+import { programSchema, TProgram } from "@/schema/program.schema";
 import { subjectSchema } from "@/schema/subject.schema";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
+import { ICreateProgram, IProgram } from "@/types/program.types";
 import { ICreateStudent } from "@/types/student.types";
 import { ICreateSubject } from "@/types/subject.types";
 import { ICreateTeacher } from "@/types/teacher.types";
@@ -21,26 +24,25 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-const SubjectForm = () => {
+const ProgramForm = () => {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICreateSubject>({
+  } = useForm<TProgram>({
     defaultValues: {
-      subjectname: "",
-      credithour: undefined,
-      teacher: "",
-      program: "",
-      class: "",
+      name: "",
+      description: "",
+      duration: undefined,
+      eligibility: "",
     },
-    resolver: yupResolver(subjectSchema),
+    resolver: yupResolver(programSchema),
     mode: "all",
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: createSubject,
+    mutationFn: createProgram,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");
@@ -50,15 +52,8 @@ const SubjectForm = () => {
     },
   });
 
-  const OnSubmit = (data: ICreateSubject) => {
-    const formData = new FormData();
-
-    formData.append("name", data.name);
-    formData.append("description", data.description);
-    formData.append("eligibility", data.eligibility);
-    formData.append("duration", String(data.duration));
-
-    mutate(formData);
+  const OnSubmit = (data: ICreateProgram) => {
+    mutate(data);
   };
 
   return (
@@ -86,7 +81,7 @@ const SubjectForm = () => {
             id="description"
             register={register}
             label="Description"
-            placeholder="0"
+            placeholder="description about program"
             type="text"
             error={errors?.description?.message}
             required
@@ -98,7 +93,7 @@ const SubjectForm = () => {
             id="eligibility"
             register={register}
             label="Eligibility"
-            placeholder="0"
+            placeholder="eligibility for this program"
             type="text"
             error={errors?.eligibility?.message}
             required
@@ -129,4 +124,4 @@ const SubjectForm = () => {
   );
 };
 
-export default SubjectForm;
+export default ProgramForm;
