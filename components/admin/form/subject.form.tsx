@@ -5,6 +5,8 @@ import { createTeacher } from "@/api/teacher.api";
 import Button from "@/components/common/ui/button";
 import Input from "@/components/common/ui/input";
 import { Select } from "@/components/common/ui/select";
+import CLassSelect from "@/components/common/ui/select-class";
+import TeacherSelect from "@/components/common/ui/select-teacher";
 import { subjectSchema } from "@/schema/subject.schema";
 import { teacherSchema } from "@/schema/teacher.schema";
 import { Gender } from "@/types/enum.types";
@@ -86,8 +88,11 @@ const SubjectForm = () => {
         />
 
         <div className="mt-3 p-1">
-            <
+          <TeacherSelect register={register("teacher")} />
+          {/* </div>
 
+        <div> */}
+          <CLassSelect register={register("class")} />
         </div>
 
         <div className="mt-4 col-span-2">
