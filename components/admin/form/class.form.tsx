@@ -1,4 +1,5 @@
 "use client";
+import { createClass } from "@/api/class.api";
 import { createStudent } from "@/api/student.api";
 import { createSubject } from "@/api/subject.api";
 import { createTeacher } from "@/api/teacher.api";
@@ -41,7 +42,7 @@ const SubjectForm = () => {
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: createSubject,
+    mutationFn: createClass,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");

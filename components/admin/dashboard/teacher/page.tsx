@@ -5,7 +5,7 @@ import { ColumnDef, useReactTable } from "@tanstack/react-table";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import DataTable from "../../table/data.table";
+import DataTable from "../../../common/table/data.table";
 import { getTeacher } from "@/api/teacher.api";
 import { ITeachers } from "@/types/teacher.types";
 

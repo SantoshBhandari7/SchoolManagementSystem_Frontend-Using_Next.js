@@ -7,7 +7,7 @@ import { ColumnDef, useReactTable } from "@tanstack/react-table";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import DataTable from "../../table/data.table";
+import DataTable from "../../../common/table/data.table";
 import { getAllProgram } from "@/api/program.api";
 import { IProgram } from "@/types/program.types";
 
