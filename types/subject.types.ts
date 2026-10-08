@@ -18,3 +18,11 @@ export interface ISubjects {
     classname: string;
   };
 }
+
+export interface ICreateSubject {
+  subjectname: string;
+  credithour: number;
+  teacher: string;
+  program: string;
+  class: string;
+}

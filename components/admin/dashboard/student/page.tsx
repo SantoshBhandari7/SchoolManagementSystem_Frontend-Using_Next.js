@@ -73,11 +73,11 @@ const StudentTable = () => {
       ),
     },
     {
-      accessorKey: "rollno",
+      accessorKey: "roll_no",
       header: " Rollno",
       cell: ({ row }) => (
         <span className="block max-w-35 truncate font-semibold text-gray-800 sm:max-w-50">
-          {row.original.rollno}
+          {row.original.roll_no}
         </span>
       ),
     },

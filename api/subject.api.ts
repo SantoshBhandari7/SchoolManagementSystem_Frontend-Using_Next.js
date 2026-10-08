@@ -8,3 +8,12 @@ export const getAllSubjects = async () => {
     throw error?.response.data;
   }
 };
+
+export const createTeacher = async (data: FormData) => {
+  try {
+    const response = await api.post("subjects", data);
+    return response.data;
+  } catch (error: any) {
+    throw error?.response.data;
+  }
+};
