@@ -9,7 +9,7 @@ export const getAllSubjects = async () => {
   }
 };
 
-export const createTeacher = async (data: FormData) => {
+export const createSubject = async (data: FormData) => {
   try {
     const response = await api.post("subjects", data);
     return response.data;

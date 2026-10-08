@@ -35,13 +35,8 @@ const SubjectForm = () => {
     mode: "all",
   });
 
-  const genderOptions = Object.values(Gender).map((gender) => ({
-    _id: gender,
-    name: gender,
-  }));
-
   const { mutate, isPending } = useMutation({
-    mutationFn: createTeacher,
+    mutationFn: createS,
     onSuccess: (response) => {
       toast.success(response?.message ?? "Teacher Created Successfully");
       router.replace("/admin");
