@@ -1,3 +1,4 @@
+import { ICreateProgram } from "@/types/program.types";
 import api from ".";
 
 export const getAllProgram = async () => {
@@ -15,3 +16,12 @@ export const getAllProgram = async () => {
 //   try {
 //   } catch (error) {}
 // };
+
+export const createProgram = async (data: ICreateProgram) => {
+  try {
+    const response = await api.post("/programs", data);
+    return response.data;
+  } catch (error: any) {
+    throw error?.response.data;
+  }
+};
