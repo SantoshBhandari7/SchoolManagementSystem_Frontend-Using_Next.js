@@ -17,7 +17,7 @@ const TeacherLayout = ({
           </p>
         </nav>
 
-        <div className=" px-3 py-2 overflow-auto">{children}</div>
+        <div className=" px-3 py- overflow-auto">{children}</div>
       </section>
     </main>
   );

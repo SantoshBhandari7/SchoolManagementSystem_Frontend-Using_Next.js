@@ -1,4 +1,3 @@
-import StudentTable from "@/components/admin/dashboard/student/page";
 import SubjectTable from "@/components/admin/dashboard/subject/page";
 import Link from "next/link";
 import React from "react";

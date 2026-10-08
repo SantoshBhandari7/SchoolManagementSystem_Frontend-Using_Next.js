@@ -19,7 +19,8 @@ const TeacherTable = () => {
     queryKey: ["getTeacher"],
   });
 
-  const teachers: ITeachers[] = data?.data?.teachers ?? [];
+  const teacher: ITeachers | null = data?.data?.teacher ?? null;
+  const teacherData: ITeachers[] = teacher ? [teacher] : [];
   const columns: ColumnDef<ITeachers>[] = [
     {
       accessorKey: "profile_image",
@@ -136,7 +137,7 @@ const TeacherTable = () => {
       <div className="w-full min-w-0 overflow-hidden rounded-lg bg-white shadow-sm">
         <div className="w-full overflow-x-auto">
           <div className="min-w-225">
-            <DataTable columns={columns} data={teachers} />
+            <DataTable columns={columns} data={teacherData} />
           </div>
         </div>
       </div>

@@ -18,3 +18,13 @@ export const createTeacher = async (data: FormData) => {
     throw error?.response.data;
   }
 };
+
+export const getTeacherProfile = async () => {
+  try {
+    const response = await api.get(`/teachers/me`);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error?.response.data;
+  }
+};

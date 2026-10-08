@@ -9,7 +9,7 @@ import React from "react";
 
 interface IProps {
   columns: ColumnDef<any>[];
-  data: any[];
+  data: any | any[];
 }
 
 const DataTable = ({ columns, data }: IProps) => {
