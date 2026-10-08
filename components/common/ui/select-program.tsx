@@ -16,11 +16,7 @@ const ProgramSelect = ({ register }: IProps) => {
 
   return (
     <div>
-      <Select
-        register={register}
-        label="Program"
-        options={data?.data?.programs}
-      />
+      <Select register={register} label="Program" options={data?.data} />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { ICreateSubject } from "@/types/subject.types";
 import api from ".";
 
 export const getAllSubjects = async () => {
@@ -9,7 +10,7 @@ export const getAllSubjects = async () => {
   }
 };
 
-export const createSubject = async (data: FormData) => {
+export const createSubject = async (data: ICreateSubject) => {
   try {
     const response = await api.post("subjects", data);
     return response.data;

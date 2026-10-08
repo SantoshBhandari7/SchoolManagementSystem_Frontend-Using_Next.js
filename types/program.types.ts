@@ -5,3 +5,10 @@ export interface IProgram {
   duration: number;
   eligibility: string;
 }
+
+export interface ICreateProgram {
+  name: string;
+  description: string;
+  duration: number;
+  eligibility: string;
+}

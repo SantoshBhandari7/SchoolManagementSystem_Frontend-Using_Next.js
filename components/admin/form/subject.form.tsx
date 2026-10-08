@@ -51,53 +51,54 @@ const SubjectForm = () => {
   });
 
   const OnSubmit = (data: ICreateSubject) => {
-    const formData = new FormData();
-
-    formData.append("subjectname", data.subjectname);
-    formData.append("teacher", data.teacher);
-    formData.append("program", data.program);
-    formData.append("credithour", String(data.credithour));
-    formData.append("class", data.class);
-    mutate(formData);
+    mutate(data);
   };
 
   return (
-    <div>
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <form
         onSubmit={handleSubmit(OnSubmit)}
-        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 gap-3"
+        className="grid w-full grid-cols-1 gap-5 md:grid-cols-2"
       >
-        <Input
-          name="subjectname"
-          id="subjectname"
-          register={register}
-          label=" Subject Name"
-          placeholder="Physics"
-          type="text"
-          error={errors?.subjectname?.message}
-          required
-        />
-        <Input
-          name="credithour"
-          id="credithour"
-          register={register}
-          label="credithour"
-          placeholder="0"
-          type="email"
-          error={errors?.credithour?.message}
-          required
-        />
+        <div className="w-full min-w-0">
+          <Input
+            name="subjectname"
+            id="subjectname"
+            register={register}
+            label="Subject Name"
+            placeholder="Physics"
+            type="text"
+            error={errors?.subjectname?.message}
+            required
+          />
+        </div>
 
-        <div className="mt-3 p-1">
+        <div className="w-full min-w-0">
+          <Input
+            name="credithour"
+            id="credithour"
+            register={register}
+            label="Credit Hour"
+            placeholder="0"
+            type="number"
+            error={errors?.credithour?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
           <TeacherSelect register={register("teacher")} />
-          {/* </div>
+        </div>
 
-        <div> */}
+        <div className="w-full min-w-0">
           <CLassSelect register={register("class")} />
+        </div>
+
+        <div className="w-full min-w-0">
           <ProgramSelect register={register("program")} />
         </div>
 
-        <div className="mt-4 col-span-2">
+        <div className="col-span-1 mt-2 w-full md:col-span-2">
           <Button
             disabled={isPending}
             label={isPending ? "Submitting..." : "Submit"}

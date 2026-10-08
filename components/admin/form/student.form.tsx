@@ -73,109 +73,135 @@ const StudentForm = () => {
   };
 
   return (
-    <div>
+    <div className="w-full px-4 sm:px-6 md:px-8">
       <form
         onSubmit={handleSubmit(OnSubmit)}
-        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 gap-3"
+        className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
       >
-        <Input
-          name="name"
-          id="name"
-          register={register}
-          label="Name"
-          placeholder="john doe"
-          type="text"
-          error={errors?.name?.message}
-          required
-        />
-        <Input
-          name="email"
-          id="email"
-          register={register}
-          label="Email"
-          placeholder="john@gmail.com"
-          type="email"
-          error={errors?.email?.message}
-          required
-        />
-        <Input
-          name="password"
-          id="password"
-          register={register}
-          label="Password"
-          placeholder="enter password"
-          type="password"
-          error={errors?.password?.message}
-          required
-        />
-        <Input
-          name="address"
-          id="address"
-          register={register}
-          label="Address"
-          placeholder="Kathmandu, nepal"
-          type="text"
-          error={errors?.address?.message}
-          required
-        />
-        <Input
-          name="roll_no"
-          id="roll_no"
-          register={register}
-          label="RollNo"
-          placeholder="roll number"
-          type="text"
-          error={errors?.roll_no?.message}
-          required
-        />
-        <Input
-          name="parentName"
-          id="parentName"
-          register={register}
-          label="ParentName"
-          placeholder="john doe"
-          type="text"
-          error={errors?.parentName?.message}
-          required
-        />
-        <Input
-          name="parentPhone"
-          id="parentPhone"
-          register={register}
-          label="ParentPhone"
-          placeholder="9810928263"
-          type="text"
-          error={errors?.parentPhone?.message}
-        />
-        <Input
-          register={register}
-          label="Profile_Image"
-          name="profile_image"
-          id="profile_image"
-          required
-          type="file"
-        />
+        <div className="w-full min-w-0">
+          <Input
+            name="name"
+            id="name"
+            register={register}
+            label="Name"
+            placeholder="John Doe"
+            type="text"
+            error={errors?.name?.message}
+            required
+          />
+        </div>
 
-        <div className="mt-3">
+        <div className="w-full min-w-0">
+          <Input
+            name="email"
+            id="email"
+            register={register}
+            label="Email"
+            placeholder="john@gmail.com"
+            type="email"
+            error={errors?.email?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            name="password"
+            id="password"
+            register={register}
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+            error={errors?.password?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            name="address"
+            id="address"
+            register={register}
+            label="Address"
+            placeholder="Kathmandu, Nepal"
+            type="text"
+            error={errors?.address?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            name="roll_no"
+            id="roll_no"
+            register={register}
+            label="Roll No"
+            placeholder="Roll number"
+            type="number"
+            error={errors?.roll_no?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            name="parentName"
+            id="parentName"
+            register={register}
+            label="Parent Name"
+            placeholder="John Doe"
+            type="text"
+            error={errors?.parentName?.message}
+            required
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            name="parentPhone"
+            id="parentPhone"
+            register={register}
+            label="Parent Phone"
+            placeholder="9810928263"
+            type="text"
+            error={errors?.parentPhone?.message}
+          />
+        </div>
+
+        <div className="w-full min-w-0">
+          <Input
+            register={register}
+            label="Profile Image"
+            name="profile_image"
+            id="profile_image"
+            required
+            type="file"
+            error={errors?.profile_image?.message}
+          />
+        </div>
+
+        <div className="w-full min-w-0">
           <CLassSelect register={register("class")} />
         </div>
-        <div className="mb-3 mt-1">
+
+        <div className="w-full min-w-0">
           <Select
             options={genderOptions}
             register={register("gender")}
             label="Gender"
+            error={errors?.gender?.message}
           />
         </div>
-        <div className="mt-4 col-span-2">
+
+        <div className="col-span-1 mt-2 w-full md:col-span-2">
           <Button
             disabled={isPending}
             type="submit"
-            label={isPending ? "Submitting" : "Submit"}
+            label={isPending ? "Submitting..." : "Submit"}
           />
         </div>
       </form>
     </div>
   );
 };
-
 export default StudentForm;

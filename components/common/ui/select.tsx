@@ -4,6 +4,10 @@ import { FaStarOfLife } from "react-icons/fa";
 interface Option {
   _id: string;
   name?: string;
+  user?: {
+    _id: string;
+    name: string;
+  };
   classname?: string;
   subjectname?: string;
 }
@@ -27,7 +31,7 @@ export const Select = ({
   required = false,
 }: IProps) => {
   return (
-    <div className="flex gap-3 ">
+    <div className="flex gap-3 flex-col sm:flex-col md:flex-row">
       <div className="text-md font-semibold tracking-wide">
         <label>{label}</label>
         {required && <FaStarOfLife className="text-red-500 text-[80px]" />}
@@ -42,7 +46,7 @@ export const Select = ({
         </option>
         {options.map((option, index) => (
           <option key={`${option._id}-${index}`} value={option._id}>
-            {option.classname || option.name || option.subjectname}
+            {option.classname || option.name || option.user?.name}
           </option>
         ))}
       </select>

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { register } from "module";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { Select } from "./select";
+import { getTeacher } from "@/api/teacher.api";
 
 interface IProps {
   register: UseFormRegisterReturn;
@@ -10,8 +11,8 @@ interface IProps {
 
 const TeacherSelect = ({ register }: IProps) => {
   const { data } = useQuery({
-    queryFn: getAllSubjects,
-    queryKey: ["get-all-subjects"],
+    queryFn: getTeacher,
+    queryKey: ["get-all-teachers"],
   });
 
   return (
