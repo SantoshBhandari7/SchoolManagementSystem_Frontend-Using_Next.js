@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../ui/input";
 import { useMutation } from "@tanstack/react-query";
@@ -8,8 +8,10 @@ import { login, signup } from "@/api/auth.api";
 import { TLogin, TSignUp } from "@/types/auth.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/schema/auth.schema";
+import AuthContext from "@/context/auth.context";
 
 const LoginForm = () => {
+  const { login, isLoading: isPending } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -23,18 +25,8 @@ const LoginForm = () => {
     mode: "all",
   });
 
-  const { mutate } = useMutation({
-    mutationFn: login,
-    onSuccess: (response) => {
-      console.log("mutation success on signup");
-    },
-    onError: (error) => {
-      console.log("mutation error on signup");
-    },
-  });
-
   const onsubmit = (data: TLogin) => {
-    mutate(data);
+    login(data);
   };
 
   return (
