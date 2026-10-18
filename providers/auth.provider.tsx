@@ -1,5 +1,5 @@
 "use client";
-import { Logout } from "@/api/auth.api";
+import { login, Logout } from "@/api/auth.api";
 import { getStudentProfile } from "@/api/student.api";
 import { getTeacherProfile } from "@/api/teacher.api";
 import AuthContext from "@/context/auth.context";
@@ -51,14 +51,40 @@ const AuthProvider = ({
     },
   });
 
+  const { mutate: loginMutation, isPending: isLoginPending } = useMutation({
+    mutationFn: login,
+    onSuccess: (response) => {
+      toast.success(response?.message ?? "login success"),
+        queryClient.invalidateQueries({
+          queryKey: ["auth-profile"],
+        });
+
+      const role = response.data?.data?.role;
+
+      if (role === Role.STUDENT) {
+        router.replace("/student");
+      } else if (role === Role.TEACHER) {
+        router.replace("/teacher");
+      } else if (role === Role.ADMIN) {
+        router.replace("/admin");
+      } else {
+        toast.error("Invalid user role");
+      }
+    },
+    onError: (error) => {
+      toast.error(error?.message ?? "Login failed");
+    },
+  });
+
   return (
     <AuthContext.Provider
       value={{
         user: data?.data,
-        isLoading: !!isLoading || !!isPending,
+        isLoading: !!isLoading || !!isPending || !!isLoginPending,
+        login: loginMutation,
         logout,
+
         register: () => {},
-        login: () => {},
       }}
     >
       {children}
