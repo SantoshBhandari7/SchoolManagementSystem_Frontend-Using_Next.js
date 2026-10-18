@@ -16,7 +16,7 @@ type TAuthContext = {
   user: TUser | null;
   logout: () => void;
   login: (data: TLogin) => void;
-  register: (data: TSignUp) => void;
+  signup: (data: TSignUp) => void;
   isLoading: boolean;
 };
 
@@ -25,7 +25,7 @@ const initialValues: TAuthContext = {
   isLoading: false,
   login: () => {},
   logout: () => {},
-  register: () => {},
+  signup: () => {},
 };
 
 const AuthContext = createContext<TAuthContext>(initialValues);

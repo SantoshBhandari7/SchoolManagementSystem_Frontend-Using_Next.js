@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import Input from "../ui/input";
 import { useForm } from "react-hook-form";
 import { TSignUp } from "@/types/auth.types";
@@ -8,8 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { signup } from "@/api/auth.api";
 import Button from "../ui/button";
+import AuthContext from "@/context/auth.context";
 
 const SignupForm = () => {
+  const { signup } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -26,18 +28,8 @@ const SignupForm = () => {
     mode: "all",
   });
 
-  const { mutate } = useMutation({
-    mutationFn: signup,
-    onSuccess: (response) => {
-      console.log("success mutation on signup ", response);
-    },
-    onError: (error) => {
-      console.log("error mutation on signup ", error);
-    },
-  });
-
   const onSubmit = (data: TSignUp) => {
-    mutate(data);
+    signup(data);
   };
 
   return (

@@ -1,5 +1,5 @@
 "use client";
-import { login, Logout } from "@/api/auth.api";
+import { login, Logout, signup } from "@/api/auth.api";
 import { getStudentProfile } from "@/api/student.api";
 import { getTeacherProfile } from "@/api/teacher.api";
 import AuthContext from "@/context/auth.context";
@@ -76,15 +76,29 @@ const AuthProvider = ({
     },
   });
 
+  const { mutate: signupMutation, isPending: isRegisterPending } = useMutation({
+    mutationFn: signup,
+    onSuccess: (response) => {
+      toast.success(response?.message ?? "register success"),
+        queryClient.invalidateQueries({
+          queryKey: ["auth-profile"],
+        });
+      router.replace("/login");
+    },
+    onError: (error) => {
+      toast.error(error?.message ?? "register failed");
+    },
+  });
+
   return (
     <AuthContext.Provider
       value={{
         user: data?.data,
-        isLoading: !!isLoading || !!isPending || !!isLoginPending,
+        isLoading:
+          !!isLoading || !!isPending || !!isLoginPending || !!isRegisterPending,
         login: loginMutation,
         logout,
-
-        register: () => {},
+        signup: signupMutation,
       }}
     >
       {children}
