@@ -1,3 +1,4 @@
+"use client";
 import StudentTable from "@/components/admin/dashboard/student/page";
 import TeacherDataTable from "@/components/teacher/teacherdata-table";
 import useAuth from "@/hook/auth.hook";

@@ -1,3 +1,4 @@
+"use client";
 import SideBar from "@/components/admin/layout";
 import SidebarContent from "@/components/admin/layout/sidebar-content";
 import AuthSection from "@/components/common/ui/authsection";
@@ -13,8 +14,8 @@ const TeacherLayout = ({
   return (
     <main className="h-screen flex ">
       <TeacherSideBar />
-      <section className="h-full w-full flex flex-col">
-        <nav className="h-13 mt-4 sm:h-18 lg:h-20 border-b border-gray-300 w-full flex items-center px-3 sm:px-5">
+      <section className="h-18 w-full flex flex-col">
+        <nav className="h-13 mt-2 mb-2 p-2 sm:h-18 lg:h-20 border-b border-gray-300 w-full flex items-center justify-between px-3 sm:px-5">
           <p className="italic font-bold text-lg text-gray-700 ">
             Hello {user?.name}
           </p>
