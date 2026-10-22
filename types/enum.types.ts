@@ -9,3 +9,7 @@ export enum Gender {
   FEMALE = "FEMALE",
   OTHERS = "OTHERS",
 }
+
+export const students=[Role.STUDENT];
+export const teachers= [Role.TEACHER];
+export const admins=[Role.ADMIN]
