@@ -4,7 +4,9 @@ import SidebarContent from "@/components/admin/layout/sidebar-content";
 import AuthSection from "@/components/common/ui/authsection";
 import Logo from "@/components/common/ui/logo";
 import TeacherSideBar from "@/components/teacher/layout";
+import withAuth from "@/hoc/withAuth.hoc";
 import useAuth from "@/hook/auth.hook";
+import { teachers } from "@/types/enum.types";
 import React from "react";
 
 const TeacherLayout = ({
@@ -28,4 +30,5 @@ const TeacherLayout = ({
   );
 };
 
-export default TeacherLayout;
+const Layout = withAuth(TeacherLayout, teachers);
+export default Layout;

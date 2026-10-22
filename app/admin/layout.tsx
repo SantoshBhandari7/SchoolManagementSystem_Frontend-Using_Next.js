@@ -5,7 +5,7 @@ import AuthSection from "@/components/common/ui/authsection";
 import Logo from "@/components/common/ui/logo";
 import withAuth from "@/hoc/withAuth.hoc";
 import useAuth from "@/hook/auth.hook";
-import { Role } from "@/types/enum.types";
+import { admins, Role } from "@/types/enum.types";
 import React from "react";
 
 const AdminLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
@@ -25,5 +25,5 @@ const AdminLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   );
 };
 
-const Layout = withAuth(AdminLayout);
+const Layout = withAuth(AdminLayout, admins);
 export default Layout;

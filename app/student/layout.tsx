@@ -1,7 +1,9 @@
 "use client";
 import AuthSection from "@/components/common/ui/authsection";
 import StudentSideBar from "@/components/student/layout";
+import withAuth from "@/hoc/withAuth.hoc";
 import useAuth from "@/hook/auth.hook";
+import { students } from "@/types/enum.types";
 import React from "react";
 
 const StudentLayout = ({
@@ -24,4 +26,6 @@ const StudentLayout = ({
     </main>
   );
 };
-export default StudentLayout;
+
+const Layout = withAuth(StudentLayout, students);
+export default Layout;
