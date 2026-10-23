@@ -1,3 +1,5 @@
+"use client";
+
 import Loading from "@/components/common/ui/loading";
 import useAuth from "@/hook/auth.hook";
 import { Role } from "@/types/enum.types";
@@ -11,30 +13,25 @@ const withAuth = (Component: any, roles: Role[]) => {
     const { isLoading, user } = useAuth();
 
     useEffect(() => {
-      if (isLoading) {
+      console.log("Auth loading:", isLoading);
+      console.log("Authenticated user:", user);
+
+      if (isLoading) return;
+
+      if (!user) {
+        toast.error("Login required");
+        router.replace("/login");
         return;
       }
 
-      if (!isLoading && !user) {
-        toast.error("login required");
-        router.replace("login");
-      }
-
-      if (user && !roles.includes(user.role)) {
+      if (!roles.includes(user.role)) {
+        toast.error("Unauthorized. You cannot access this page");
         router.replace("/");
-        toast.error("Unauthorized. you cannot access this page");
       }
-    }, [router, user, isLoading]);
+    }, [isLoading, user, router, roles]);
 
-    if (isLoading) {
+    if (isLoading || !user || !roles.includes(user.role)) {
       return <Loading />;
-    }
-
-    if (!user) {
-      return null;
-    }
-    if (user && !roles.includes(user.role)) {
-      return null;
     }
 
     return <Component {...props} />;

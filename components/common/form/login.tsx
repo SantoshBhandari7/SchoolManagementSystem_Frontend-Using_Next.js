@@ -2,16 +2,18 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../ui/input";
-import { useMutation } from "@tanstack/react-query";
 import Button from "../ui/button";
-import { login, signup } from "@/api/auth.api";
 import { TLogin, TSignUp } from "@/types/auth.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/schema/auth.schema";
 import AuthContext from "@/context/auth.context";
+import { Role } from "@/types/enum.types";
+import Link from "next/link";
+import withAuth from "@/hoc/withAuth.hoc";
 
 const LoginForm = () => {
-  const { login, isLoading: isPending } = useContext(AuthContext);
+  const { login, isLoading: isPending, user } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -56,6 +58,13 @@ const LoginForm = () => {
       <div className="mt-2">
         <Button type="submit" label="Login" />
       </div>
+
+      <p className="flex gap-1">
+        Don't have an admin account?
+        <Link href="/sign-up" className="text-blue-500 ">
+          Sign up
+        </Link>
+      </p>
     </form>
   );
 };

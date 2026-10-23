@@ -24,6 +24,7 @@ const AdminLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     </main>
   );
 };
+// export default AdminLayout;
 
 const Layout = withAuth(AdminLayout, admins);
 export default Layout;

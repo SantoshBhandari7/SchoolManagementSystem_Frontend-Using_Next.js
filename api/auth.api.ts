@@ -31,3 +31,12 @@ export const Logout = async () => {
     throw error?.response.data;
   }
 };
+
+export const getMe = async () => {
+  try {
+    const response = await api.get("/auth/getprfile");
+    return response.data;
+  } catch (error: any) {
+    throw error?.response.data;
+  }
+};

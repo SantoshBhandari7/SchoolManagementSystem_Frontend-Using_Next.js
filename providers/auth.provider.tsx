@@ -1,9 +1,9 @@
 "use client";
-import { login, Logout, signup } from "@/api/auth.api";
+
+import { getMe, login, Logout, signup } from "@/api/auth.api";
 import { getStudentProfile } from "@/api/student.api";
 import { getTeacherProfile } from "@/api/teacher.api";
 import AuthContext from "@/context/auth.context";
-import useAuth from "@/hook/auth.hook";
 import { Role } from "@/types/enum.types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -14,10 +14,18 @@ const AuthProvider = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
   const queryClient = useQueryClient();
-  const { user } = useAuth();
   const router = useRouter();
 
-  const { isLoading, isError, data } = useQuery({
+  // Get the authenticated user for ADMIN, STUDENT, and TEACHER
+  const { data: authResponse, isLoading: isAuthLoading } = useQuery({
+    queryKey: ["auth-profile"],
+    queryFn: getMe,
+    retry: false,
+  });
+
+  const user = authResponse?.data ?? null;
+
+  const { data: profileResponse, isLoading: isProfileLoading } = useQuery({
     queryKey: ["profile", user?._id, user?.role],
     queryFn: async () => {
       if (user?.role === Role.STUDENT) {
@@ -28,47 +36,54 @@ const AuthProvider = ({
         return getTeacherProfile();
       }
 
-      throw new Error("Invalid user role");
+      return null;
     },
-    refetchInterval: 5 * 60 * 1000,
-    refetchOnWindowFocus: true,
-    retry: false,
     enabled: user?.role === Role.STUDENT || user?.role === Role.TEACHER,
+    retry: false,
+    refetchOnWindowFocus: true,
+    refetchInterval: 5 * 60 * 1000,
   });
 
-  const { mutate: logout, isPending } = useMutation({
+  // Logout
+  const { mutate: logout, isPending: isLogoutPending } = useMutation({
     mutationFn: Logout,
-    onSuccess: (response) => {
-      toast.success(response?.message ?? "logout success");
-      queryClient.invalidateQueries({
-        queryKey: ["auth-profiles"],
-      });
-      queryClient.setQueryData(["auth-profiles"], null);
+    onSuccess: async (response) => {
+      queryClient.clear();
+      toast.success(response?.message ?? "Logout successful");
       router.replace("/");
     },
     onError: (error) => {
-      toast.error(error?.message ?? "logout failed");
+      toast.error(error?.message ?? "Logout failed");
     },
   });
 
+  // Login
   const { mutate: loginMutation, isPending: isLoginPending } = useMutation({
     mutationFn: login,
-    onSuccess: (response) => {
-      toast.success(response?.message ?? "login success"),
-        queryClient.invalidateQueries({
-          queryKey: ["auth-profile"],
-        });
+    onSuccess: async (response) => {
+      const loggedInUser = response?.data?.data;
+      const role = loggedInUser?.role;
 
-      const role = response.data?.data?.role;
+      if (!loggedInUser || !role) {
+        toast.error("User information not found in login response");
+        return;
+      }
 
-      if (role === Role.STUDENT) {
+      queryClient.setQueryData(["auth-profile"], {
+        message: "Login successful",
+        data: loggedInUser,
+      });
+
+      toast.success(response?.message ?? "Login successful");
+
+      if (role === Role.ADMIN) {
+        router.replace("/admin");
+      } else if (role === Role.STUDENT) {
         router.replace("/student");
       } else if (role === Role.TEACHER) {
         router.replace("/teacher");
-      } else if (role === Role.ADMIN) {
-        router.replace("/admin");
       } else {
-        toast.error("Invalid user role");
+        toast.error(`Invalid user role: ${String(role)}`);
       }
     },
     onError: (error) => {
@@ -76,26 +91,28 @@ const AuthProvider = ({
     },
   });
 
+  // Signup
   const { mutate: signupMutation, isPending: isRegisterPending } = useMutation({
     mutationFn: signup,
     onSuccess: (response) => {
-      toast.success(response?.message ?? "register success"),
-        queryClient.invalidateQueries({
-          queryKey: ["auth-profile"],
-        });
+      toast.success(response?.message ?? "Registration successful");
       router.replace("/login");
     },
     onError: (error) => {
-      toast.error(error?.message ?? "register failed");
+      toast.error(error?.message ?? "Registration failed");
     },
   });
 
   return (
     <AuthContext.Provider
       value={{
-        user: data?.data,
+        user,
         isLoading:
-          !!isLoading || !!isPending || !!isLoginPending || !!isRegisterPending,
+          isAuthLoading ||
+          isProfileLoading ||
+          isLogoutPending ||
+          isLoginPending ||
+          isRegisterPending,
         login: loginMutation,
         logout,
         signup: signupMutation,
