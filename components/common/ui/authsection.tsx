@@ -9,13 +9,13 @@ const AuthSection = () => {
     <div className="flex items-center  justify-center gap-2 ">
       <div
         title="profile"
-        className="h-14 w-16 rounded-full border border-sky-600 p-1 overflow-clip"
+        className="h-14 w-14 rounded-full border border-sky-600 p-1 overflow-clip"
       >
         <Image
-          src={user?.profile_image?.path ?? "/logo.png"}
+          src={user?.profile_image?.path ?? "/profile.png"}
           alt="Profile_image"
-          width={600}
-          height={600}
+          width={500}
+          height={500}
           className="h-full w-full rounded-full "
         />
       </div>

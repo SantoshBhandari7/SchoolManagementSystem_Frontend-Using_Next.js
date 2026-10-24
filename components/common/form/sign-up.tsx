@@ -86,6 +86,15 @@ const SignupForm = () => {
         id="phone"
         error={errors?.phone?.message}
       />
+      <Input
+        register={register}
+        name="profile_image"
+        type="file"
+        required
+        label="Profile_image"
+        id="profile_image"
+        error={errors?.profile_image?.message}
+      />
       <div className="mt-2">
         <Button type="submit" label="Sign-Up" />
       </div>

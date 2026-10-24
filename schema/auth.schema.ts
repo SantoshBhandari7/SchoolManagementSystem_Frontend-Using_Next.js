@@ -39,4 +39,12 @@ export const SignUpSchema = yup.object({
       "phone number should be exact 10",
       (value) => !value || /^[0-9]{10}$/.test(value),
     ),
+  profile_image: yup
+     .mixed<FileList>()
+     .required("Profile image is required")
+     .test(
+       "fileExists",
+       "Please select a profile image",
+       (value) => value instanceof FileList && value.length > 0,
+     ),
 });
